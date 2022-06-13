@@ -13,8 +13,7 @@ let countComma = 0;
 inputInterestRate.addEventListener("keypress", function(e) {
 
     const keyCode = (e.keyCode ? e.keyCode : e.wich);
-    // 44 = "," 46 = "." Números = 48 ao 57
- 
+    // 44 = "," 46 = "." Números = 48 ao 57 
     if((keyCode > 47 && keyCode < 58) || (keyCode == 44)) {
 
         if(keyCode == 44) {
