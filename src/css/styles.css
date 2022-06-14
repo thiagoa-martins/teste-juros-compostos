@@ -42,6 +42,17 @@ body {
     padding: 5px;
 }
 
+.form fieldset input.error { 
+    border: 1px solid #FF0000;
+}
+
+.form fieldset .message {
+    display: block;
+    color: #FF0000;
+    font-weight: 500;
+    margin-bottom: 1em;
+}
+
 .form fieldset input:focus {
     outline: solid;
     outline-width: 1px;
