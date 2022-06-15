@@ -6,10 +6,6 @@ const inputMonthlyPayment = document.forms["form"]["monthlyPayment"];
 const inputInterestRate = document.forms["form"]["interestRate"];
 const inputContributionTime = document.forms["form"]["contributionTime"];
 
-
-
- `{ "expr": "${inputMonthlyPayment.value} * (((1 + ${inputInterestRate.value}) ^ (${inputContributionTime.value * 12}) - 1) / 0.00517)" }`;
-
 let countCommaX = 0;
 let countCommaY = 0;
 
@@ -200,8 +196,6 @@ buttonSimulate.addEventListener("click", function() {
                 method: "POST",
                 body: `{ "expr": "${valueMonthlyPaymentFormat} * (((1 + 0.0${valueInputInterestRateFormat}) ^ ${inputContributionTime.value * 12} - 1) / 0.0${valueInputInterestRateFormat})" }`
             }
-
-            console.log(configs.body)
 
             fetch("http://api.mathjs.org/v4/", configs);
         }
