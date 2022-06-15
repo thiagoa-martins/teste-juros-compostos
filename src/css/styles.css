@@ -6,6 +6,7 @@
 
 body {
     display: flex;
+    justify-content: center;
     align-items: center;
     font-size: 16px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -13,7 +14,7 @@ body {
 }
 
 .form {
-    margin: 0 auto;
+    margin: 0 0.5em;
     width: 400px;
     border: 1px solid #000;
     border-radius: 5px;
