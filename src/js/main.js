@@ -66,7 +66,7 @@ inputInterestRate.addEventListener("keypress", function(e) {
     });
 });
 
-buttonSimulate.addEventListener("click", function() {
+const clickButtonSimulate = buttonSimulate.addEventListener("click", function() {
 
     form.onsubmit = (e) => {
 
@@ -211,7 +211,7 @@ buttonSimulate.addEventListener("click", function() {
             function displayData(response) {
                 const result = parseFloat(response.result);
                 
-                content += `
+                content = `
                     <h1>Ciclic</h1>
 
                     <fieldset>
@@ -222,19 +222,27 @@ buttonSimulate.addEventListener("click", function() {
                     </fieldset>
 
                     <fieldset>
-                        <button id="simulate">Simular Novamente</button>
+                        <button id="buttonSimulateAgain">Simular Novamente</button>
                     </fieldset>
                 `;
 
                 form.style.display = "none";
 
+                inputName.value = "";
+                inputMonthlyPayment.value = "";
+                inputInterestRate.value = "";
+                inputContributionTime.value = "";
+
                 formResult.classList.add("form");
                 formResult.innerHTML = content;
+                
+                formResult.style.display = "block"
+  
+                const buttonSimulateAgain = document.getElementById("buttonSimulateAgain");
 
-                buttonSimulate.addEventListener("click", function() {
-
+                buttonSimulateAgain.addEventListener("click", function() {
                     formResult.style.display = "none";
-                    form.style.display = "block";
+                    form.style.display = "block";     
                 });
             }
         }
