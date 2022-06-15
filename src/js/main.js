@@ -181,8 +181,6 @@ const clickButtonSimulate = buttonSimulate.addEventListener("click", function() 
         checkInputInterestRate();
         checkInputContributionTime();
 
-        
-
         if(!hasError) {
 
             const valueMonthlyPayment = inputMonthlyPayment.value;
@@ -249,8 +247,5 @@ const clickButtonSimulate = buttonSimulate.addEventListener("click", function() 
                 });
             }
         }
-
-
-        
     } 
 });
