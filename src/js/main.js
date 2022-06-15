@@ -210,15 +210,18 @@ const clickButtonSimulate = buttonSimulate.addEventListener("click", function() 
 
             function displayData(response) {
                 const result = parseFloat(response.result);
-                
+
+                const resultFormatFloat = result.toFixed(2);
+                const resultFormatString = resultFormatFloat.replace(".", ",");
+
                 content = `
                     <h1>Ciclic</h1>
 
                     <fieldset>
                         <label>Olá ${inputName.value},</label>
                         <label>investindo <strong>R$ ${inputMonthlyPayment.value}</strong> todo mês,</label>
-                        <label>você terá <strong>R$ ${result.toFixed(2)}</strong></label>
-                        <label>em ${inputContributionTime.value} anos sob uma taxa de juros de <strong>${inputInterestRate.value}</strong> ao mês.</label>
+                        <label>você terá <strong>R$ ${resultFormatString}</strong> em <strong>${inputContributionTime.value} anos</strong></label>
+                        <label> sob uma taxa de juros de <strong>${inputInterestRate.value}%</strong> ao mês.</label>
                     </fieldset>
 
                     <fieldset>
@@ -235,7 +238,7 @@ const clickButtonSimulate = buttonSimulate.addEventListener("click", function() 
 
                 formResult.classList.add("form");
                 formResult.innerHTML = content;
-                
+
                 formResult.style.display = "block"
   
                 const buttonSimulateAgain = document.getElementById("buttonSimulateAgain");

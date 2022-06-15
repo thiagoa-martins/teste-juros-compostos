@@ -73,3 +73,11 @@ body {
 .form fieldset button:hover {
     filter: brightness(1.2);
 }
+
+.formResult {
+    text-align: center;
+}
+
+.formResult fieldset button {
+    margin: 1em 0 0;
+}
