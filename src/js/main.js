@@ -1,4 +1,5 @@
 const form = document.getElementById("form");
+const formResult = document.getElementById("formResult");
 const buttonSimulate = document.getElementById("simulate");
 
 const inputName = document.forms["form"]["name"];
@@ -197,7 +198,45 @@ buttonSimulate.addEventListener("click", function() {
                 body: `{ "expr": "${valueMonthlyPaymentFormat} * (((1 + 0.0${valueInputInterestRateFormat}) ^ ${inputContributionTime.value * 12} - 1) / 0.0${valueInputInterestRateFormat})" }`
             }
 
-            fetch("http://api.mathjs.org/v4/", configs);
+            let content = ""; 
+
+            fetch("http://api.mathjs.org/v4/", configs)
+            .then(returnFromAPI)
+            .then(displayData)
+
+            function returnFromAPI(response) {
+                return response.json();
+            }
+
+            function displayData(response) {
+                const result = parseFloat(response.result);
+                
+                content += `
+                    <h1>Ciclic</h1>
+
+                    <fieldset>
+                        <label>Olá ${inputName.value},</label>
+                        <label>investindo <strong>R$ ${inputMonthlyPayment.value}</strong> todo mês,</label>
+                        <label>você terá <strong>R$ ${result.toFixed(2)}</strong></label>
+                        <label>em ${inputContributionTime.value} anos sob uma taxa de juros de <strong>${inputInterestRate.value}</strong> ao mês.</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <button id="simulate">Simular Novamente</button>
+                    </fieldset>
+                `;
+
+                form.style.display = "none";
+
+                formResult.classList.add("form");
+                formResult.innerHTML = content;
+
+                buttonSimulate.addEventListener("click", function() {
+
+                    formResult.style.display = "none";
+                    form.style.display = "block";
+                });
+            }
         }
 
 
