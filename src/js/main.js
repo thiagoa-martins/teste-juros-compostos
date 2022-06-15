@@ -8,7 +8,7 @@ const inputContributionTime = document.forms["form"]["contributionTime"];
 
 
 
-const structure = `{ "expr": "${inputMonthlyPayment.value} * (((1 + ${inputInterestRate.value}) ^ (${inputContributionTime.value * 12}) - 1) / 0.00517)" }`;
+ `{ "expr": "${inputMonthlyPayment.value} * (((1 + ${inputInterestRate.value}) ^ (${inputContributionTime.value * 12}) - 1) / 0.00517)" }`;
 
 let countCommaX = 0;
 let countCommaY = 0;
@@ -160,7 +160,7 @@ buttonSimulate.addEventListener("click", function() {
 
         function checkInputContributionTime() {
 
-            if(!inputContributionTime.value) {
+            if(!inputContributionTime.value || inputContributionTime.value < 1) {
 
                 hasError = true;
     
@@ -168,7 +168,7 @@ buttonSimulate.addEventListener("click", function() {
     
                 const label = inputContributionTime.nextSibling.nextSibling;
         
-                label.innerText = "Informe o Tempo de Contribuição";
+                label.innerText = "Informe um Tempo de Contribuição válido";
         
             } else {
                 inputContributionTime.classList.remove("error");
@@ -184,8 +184,29 @@ buttonSimulate.addEventListener("click", function() {
         checkInputInterestRate();
         checkInputContributionTime();
 
+        
+
         if(!hasError) {
-            form.submit();
+
+            const valueMonthlyPayment = inputMonthlyPayment.value;
+            
+            const valueMonthlyPaymentFormat = valueMonthlyPayment.replace(",", "");
+
+            const valueInputInterestRate = inputInterestRate.value;
+
+            const valueInputInterestRateFormat = valueInputInterestRate.replace(",", "");
+
+            const configs = {
+                method: "POST",
+                body: `{ "expr": "${valueMonthlyPaymentFormat} * (((1 + 0.0${valueInputInterestRateFormat}) ^ ${inputContributionTime.value * 12} - 1) / 0.0${valueInputInterestRateFormat})" }`
+            }
+
+            console.log(configs.body)
+
+            fetch("http://api.mathjs.org/v4/", configs);
         }
+
+
+        
     } 
 });
