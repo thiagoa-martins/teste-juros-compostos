@@ -14,7 +14,7 @@
 
       <fieldset>
         <label for="name">Nome</label>
-        <input id="name" type="text" name="name" pattern="[A-Za-z ]{4,30}" title="O nome deve ter no máximo 30 caracteres"/>
+        <input id="name" type="text" name="name" pattern="[A-Za-z ]{4,30}" title="O nome deve ser um texto com no max: 30 digitos"/>
         <label class="message"></label>
       </fieldset>
 
@@ -25,7 +25,7 @@
           type="text"
           name="monthlyPayment"
           placeholder="Somente números"
-          pattern="^(?=.*[0-9])[0-9,]{1,4}" title="Tente neste formato: 20, 200, ou 2000"
+          pattern="^(?=.*[0-9])[0-9,]{1,4}" title="Ex: 20 max: 4 digitos"
         />
         <label class="message"></label>
       </fieldset>
@@ -37,7 +37,7 @@
           type="text"
           name="interestRate"
           placeholder="Somente números"
-          pattern="^(?=.*[0-9])[0-9,]{1,4}" title="Tente neste formato: 0,517"
+          pattern="^(?=.*[0-9])[0-9,]{1,4}" title="Ex: 0,517 max: 4 digitos"
         />
         <label class="message"></label>
       </fieldset>
@@ -48,7 +48,7 @@
           id="contributionTime"
           type="number"
           name="contributionTime"
-          placeholder="Ano(s)" pattern="^(?=.*[0-9])[0-9]{1,2}" title="Tente neste formato: 1 ou 10"
+          placeholder="Ano(s)" pattern="^(?=.*[0-9])[0-9]{1,2}" title="Ex: 1 max: 2 digitos"
         />
         <label class="message"></label>
       </fieldset>
