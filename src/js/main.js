@@ -111,7 +111,7 @@ buttonSimulate.addEventListener("click", function () {
 
         const label = inputName.nextSibling.nextSibling;
 
-        label.innerText = "Informe o seu nome nompleto";
+        label.innerText = "Informe o seu nome completo";
       } else {
         inputName.classList.remove("error");
 

@@ -45,6 +45,16 @@ body {
   padding: 5px;
 }
 
+.form fieldset input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.form fieldset input[type="number"] {
+    -moz-appearance: textfield;
+}
+
 .form fieldset input.error {
   border: 1px solid #ff0000;
 }
