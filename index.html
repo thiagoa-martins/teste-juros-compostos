@@ -20,13 +20,13 @@
 
         <fieldset>
             <label for="monthlyPayment">Mensalidade</label>
-            <input id="monthlyPayment" type="text" name="monthlyPayment" placeholder="Somente números">
+            <input id="monthlyPayment" type="text" name="monthlyPayment" placeholder="Somente números" pattern="^(?=.*[0-9])[0-9,]{1,6}">
             <label class="message"></label>
         </fieldset>
 
         <fieldset>
             <label for="interestRate">Taxa de Juros (%)</label>
-            <input id="interestRate" type="text" name="interestRate" placeholder="Somente números">
+            <input id="interestRate" type="text" name="interestRate" placeholder="Somente números" pattern="^(?=.*[0-9])[0-9,]{1,6}">
             <label class="message"></label>
         </fieldset>
 

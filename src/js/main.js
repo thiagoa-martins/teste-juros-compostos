@@ -66,7 +66,7 @@ inputInterestRate.addEventListener("keypress", function(e) {
     });
 });
 
-const clickButtonSimulate = buttonSimulate.addEventListener("click", function() {
+buttonSimulate.addEventListener("click", function() {
 
     form.onsubmit = (e) => {
 
