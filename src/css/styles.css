@@ -94,3 +94,13 @@ input[type="number"]::-webkit-inner-spin-button {
 .formResult fieldset button {
   margin: 1em 0 0;
 }
+
+@media screen and (max-width: 400px) {
+  body {
+    height: 90vh;
+  }
+
+  .form {
+    width: 100%;
+  }
+}
