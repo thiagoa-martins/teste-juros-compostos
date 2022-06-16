@@ -1,84 +1,86 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  height: 100vh;
+  background-color: lightgray;
 }
 
 .form {
-    margin: 0 0.5em;
-    width: 400px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    padding: 1em 0;
+  margin: 0 0.5em;
+  width: 400px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 1em 0;
+  background-color: #FFF;
 }
 
 .form h1 {
-    text-align: center;
-    margin-bottom: 1em;
+  text-align: center;
+  margin-bottom: 1em;
 }
 
 .form fieldset {
-    border: none;
-    padding: 0 1em;
+  border: none;
+  padding: 0 1em;
 }
 
 .form fieldset label {
-    display: block;
-    margin-bottom: 5px;
+  display: block;
+  margin-bottom: 5px;
 }
 
 .form fieldset input {
-    height: 30px;
-    width: 100%;
-    margin-bottom: 1em;
-    padding: 5px;
+  height: 30px;
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 5px;
 }
 
-.form fieldset input.error { 
-    border: 1px solid #FF0000;
+.form fieldset input.error {
+  border: 1px solid #ff0000;
 }
 
 .form fieldset .message {
-    display: block;
-    color: #FF0000;
-    font-weight: 500;
-    margin-bottom: 1em;
+  display: block;
+  color: #ff0000;
+  font-weight: 500;
+  margin-bottom: 1em;
 }
 
 .form fieldset input:focus {
-    outline: solid;
-    outline-width: 1px;
-    outline-color: #0000FF;
+  outline: solid;
+  outline-width: 1px;
+  outline-color: #0000ff;
 }
 
 .form fieldset button {
-    padding: 10px 20px;
-    text-transform: uppercase;
-    font-weight: bold;
-    background-color: greenyellow;
-    border: none;
-    border-radius: 5px;
-    width: 100%;
-    cursor: pointer;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: greenyellow;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
 }
 
 .form fieldset button:hover {
-    filter: brightness(1.2);
+  filter: brightness(1.2);
 }
 
 .formResult {
-    text-align: center;
+  text-align: center;
 }
 
 .formResult fieldset button {
-    margin: 1em 0 0;
+  margin: 1em 0 0;
 }

@@ -1,49 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ciclic</title>
 
-    <link rel="stylesheet" href="src/css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="src/css/styles.css" />
+  </head>
+  <body>
     <form id="form" class="form" action="#">
-        <h1>Ciclic</h1>
+      <h1>Ciclic</h1>
 
-        <fieldset>
-            <label for="name">Nome</label>
-            <input id="name" type="text" name="name">
-            <label class="message"></label>
-        </fieldset>
+      <fieldset>
+        <label for="name">Nome</label>
+        <input id="name" type="text" name="name" />
+        <label class="message"></label>
+      </fieldset>
 
-        <fieldset>
-            <label for="monthlyPayment">Mensalidade</label>
-            <input id="monthlyPayment" type="text" name="monthlyPayment" placeholder="Somente números" pattern="^(?=.*[0-9])[0-9,]{1,6}">
-            <label class="message"></label>
-        </fieldset>
+      <fieldset>
+        <label for="monthlyPayment">Mensalidade</label>
+        <input
+          id="monthlyPayment"
+          type="text"
+          name="monthlyPayment"
+          placeholder="Somente números"
+          pattern="^(?=.*[0-9])[0-9,]{1,6}"
+        />
+        <label class="message"></label>
+      </fieldset>
 
-        <fieldset>
-            <label for="interestRate">Taxa de Juros (%)</label>
-            <input id="interestRate" type="text" name="interestRate" placeholder="Somente números" pattern="^(?=.*[0-9])[0-9,]{1,6}">
-            <label class="message"></label>
-        </fieldset>
+      <fieldset>
+        <label for="interestRate">Taxa de juros (%)</label>
+        <input
+          id="interestRate"
+          type="text"
+          name="interestRate"
+          placeholder="Somente números"
+          pattern="^(?=.*[0-9])[0-9,]{1,6}"
+        />
+        <label class="message"></label>
+      </fieldset>
 
-        <fieldset>
-            <label for="contributionTime">Tempo de Contribuição</label>
-            <input id="contributionTime" type="number" name="contributionTime" placeholder="Ano(s)">
-            <label class="message"></label>
-        </fieldset>
+      <fieldset>
+        <label for="contributionTime">Tempo de contribuição</label>
+        <input
+          id="contributionTime"
+          type="number"
+          name="contributionTime"
+          placeholder="Ano(s)"
+        />
+        <label class="message"></label>
+      </fieldset>
 
-        <fieldset>
-            <button id="simulate">Simular</button>
-        </fieldset>
+      <fieldset>
+        <button id="simulate">Simular</button>
+      </fieldset>
     </form>
 
-    <form id="formResult" class="formResult" action="#">
-    </form>
+    <form id="formResult" class="formResult" action="#"></form>
 
     <script src="src/js/main.js"></script>
-</body>
+  </body>
 </html>

@@ -10,209 +10,212 @@ const inputContributionTime = document.forms["form"]["contributionTime"];
 let countCommaX = 0;
 let countCommaY = 0;
 
-inputMonthlyPayment.addEventListener("keypress", function(e) {
+inputName.addEventListener("keypress", function (e) {
+  const keyCode = e.keyCode ? e.keyCode : e.wich;
 
-    const keyCode = (e.keyCode ? e.keyCode : e.wich);
+  const num = [
+    113, 119, 101, 114, 116, 121, 117, 105, 111, 112, 97, 102, 103, 104, 106,
+    107, 108, 231, 122, 120, 99, 118, 98, 110, 109, 115, 81, 100, 32, 87, 69,
+    82, 84, 89, 85, 73, 79, 80, 65, 83, 68, 70, 71, 72, 74, 75, 76, 199, 90, 88,
+    67, 86, 66, 78, 77
+  ];
 
-    if((keyCode > 47 && keyCode < 58) || (keyCode == 44)) {
+  let validade = false;
 
-        if(keyCode == 44) {
-    
-            if(countCommaX == 0) {
-                countCommaX += 1;
-            } else {
-                e.preventDefault();
-            }    
-        }
-    } else {
-        e.preventDefault();
+  for (let i = 0; i < num.length; i++) {
+    if (keyCode == num[i]) {
+      validade = true;
     }
+  }
 
-    inputMonthlyPayment.addEventListener("keydown", function(e) {
-
-        const keyCode = (e.keyCode ? e.keyCode : e.wich);
-
-        if(keyCode == 8 && countCommaX == 1) {
-            countCommaX -= countCommaX;
-        }
-    });
+  if (!validade) {
+    e.preventDefault();
+  }
 });
 
-inputInterestRate.addEventListener("keypress", function(e) {
+inputMonthlyPayment.addEventListener("keypress", function (e) {
+  const keyCode = e.keyCode ? e.keyCode : e.wich;
 
-    const keyCode = (e.keyCode ? e.keyCode : e.wich);
-
-    if((keyCode > 47 && keyCode < 58) || (keyCode == 44)) {
-
-        if(keyCode == 44) {
-    
-            if(countCommaY == 0) {
-                countCommaY += 1;
-            } else {
-                e.preventDefault();
-            }    
-        }
-    } else {
+  if ((keyCode > 47 && keyCode < 58) || keyCode == 44) {
+    if (keyCode == 44) {
+      if (countCommaX == 0) {
+        countCommaX += 1;
+      } else {
         e.preventDefault();
+      }
     }
+  } else {
+    e.preventDefault();
+  }
 
-    inputInterestRate.addEventListener("keydown", function(e) {
+  inputMonthlyPayment.addEventListener("keydown", function (e) {
+    const keyCode = e.keyCode ? e.keyCode : e.wich;
 
-        const keyCode = (e.keyCode ? e.keyCode : e.wich);
-
-        if(keyCode == 8 && countCommaY == 1) {
-            countCommaY -= countCommaY;
-        }
-    });
+    if (keyCode == 8 && countCommaX == 1) {
+      countCommaX -= countCommaX;
+    }
+  });
 });
 
-buttonSimulate.addEventListener("click", function() {
+inputInterestRate.addEventListener("keypress", function (e) {
+  const keyCode = e.keyCode ? e.keyCode : e.wich;
 
-    form.onsubmit = (e) => {
-
-        inputName.addEventListener("keyup", function() {
-            checkName();
-        });
-
-
-        inputMonthlyPayment.addEventListener("keyup", function() {
-            checkInputMonthlyPayment();
-        });
-
-
-        inputInterestRate.addEventListener("keyup", function() {
-            checkInputInterestRate();
-        });
-
-        inputContributionTime.addEventListener("keyup", function() {
-            checkInputContributionTime();
-        });
-
+  if ((keyCode > 47 && keyCode < 58) || keyCode == 44) {
+    if (keyCode == 44) {
+      if (countCommaY == 0) {
+        countCommaY += 1;
+      } else {
         e.preventDefault();
+      }
+    }
+  } else {
+    e.preventDefault();
+  }
 
-        let hasError = false;
+  inputInterestRate.addEventListener("keydown", function (e) {
+    const keyCode = e.keyCode ? e.keyCode : e.wich;
 
-        function checkName() {
+    if (keyCode == 8 && countCommaY == 1) {
+      countCommaY -= countCommaY;
+    }
+  });
+});
 
-            if(!inputName.value) {
+buttonSimulate.addEventListener("click", function () {
+  form.onsubmit = (e) => {
+    inputName.addEventListener("keyup", function () {
+      checkName();
+    });
 
-                hasError = true;
-    
-                inputName.classList.add("error");
-    
-                const label = inputName.nextSibling.nextSibling;
-        
-                label.innerText = "Informe o seu Nome Completo";
-        
-            } else {
-                inputName.classList.remove("error");
-    
-                const label = inputName.nextSibling.nextSibling;
-        
-                label.innerText = "";
-            }
-        }
+    inputMonthlyPayment.addEventListener("keyup", function () {
+      checkInputMonthlyPayment();
+    });
 
-        function checkInputMonthlyPayment() {
+    inputInterestRate.addEventListener("keyup", function () {
+      checkInputInterestRate();
+    });
 
-            if(!inputMonthlyPayment.value) {
+    inputContributionTime.addEventListener("keyup", function () {
+      checkInputContributionTime();
+    });
 
-                hasError = true;
-    
-                inputMonthlyPayment.classList.add("error");
-    
-                const label = inputMonthlyPayment.nextSibling.nextSibling;
-        
-                label.innerText = "Informe a Mensalidade";
-        
-            } else {
-                inputMonthlyPayment.classList.remove("error");
-    
-                const label = inputMonthlyPayment.nextSibling.nextSibling;
-        
-                label.innerText = "";
-            }
-        }
+    e.preventDefault();
 
-        function checkInputInterestRate() {
+    let hasError = false;
 
-            if(!inputInterestRate.value) {
+    function checkName() {
+      if (!inputName.value) {
+        hasError = true;
 
-                hasError = true;
+        inputName.classList.add("error");
 
-                inputInterestRate.classList.add("error");
+        const label = inputName.nextSibling.nextSibling;
 
-                const label = inputInterestRate.nextSibling.nextSibling;
-        
-                label.innerText = "Informe a Taxa de Juros";
-        
-            } else {
-                inputInterestRate.classList.remove("error");
+        label.innerText = "Informe o seu nome nompleto";
+      } else {
+        inputName.classList.remove("error");
 
-                const label = inputInterestRate.nextSibling.nextSibling;
-        
-                label.innerText = "";
-            }
-        }
+        const label = inputName.nextSibling.nextSibling;
 
-        function checkInputContributionTime() {
+        label.innerText = "";
+      }
+    }
 
-            if(!inputContributionTime.value || inputContributionTime.value < 1) {
+    function checkInputMonthlyPayment() {
+      if (!inputMonthlyPayment.value) {
+        hasError = true;
 
-                hasError = true;
-    
-                inputContributionTime.classList.add("error");
-    
-                const label = inputContributionTime.nextSibling.nextSibling;
-        
-                label.innerText = "Informe um Tempo de Contribuição válido";
-        
-            } else {
-                inputContributionTime.classList.remove("error");
-    
-                const label = inputContributionTime.nextSibling.nextSibling;
-        
-                label.innerText = "";
-            }
-        }
+        inputMonthlyPayment.classList.add("error");
 
-        checkName();
-        checkInputMonthlyPayment();
-        checkInputInterestRate();
-        checkInputContributionTime();
+        const label = inputMonthlyPayment.nextSibling.nextSibling;
 
-        if(!hasError) {
+        label.innerText = "Informe a mensalidade";
+      } else {
+        inputMonthlyPayment.classList.remove("error");
 
-            const valueMonthlyPayment = inputMonthlyPayment.value;
-            
-            const valueMonthlyPaymentFormat = valueMonthlyPayment.replace(",", "");
+        const label = inputMonthlyPayment.nextSibling.nextSibling;
 
-            const valueInputInterestRate = inputInterestRate.value;
+        label.innerText = "";
+      }
+    }
 
-            const valueInputInterestRateFormat = valueInputInterestRate.replace(",", "");
+    function checkInputInterestRate() {
+      if (!inputInterestRate.value) {
+        hasError = true;
 
-            const configs = {
-                method: "POST",
-                body: `{ "expr": "${valueMonthlyPaymentFormat} * (((1 + 0.0${valueInputInterestRateFormat}) ^ ${inputContributionTime.value * 12} - 1) / 0.0${valueInputInterestRateFormat})" }`
-            }
+        inputInterestRate.classList.add("error");
 
-            let content = ""; 
+        const label = inputInterestRate.nextSibling.nextSibling;
 
-            fetch("https://api.mathjs.org/v4/", configs)
-            .then(returnFromAPI)
-            .then(displayData)
+        label.innerText = "Informe a taxa de juros";
+      } else {
+        inputInterestRate.classList.remove("error");
 
-            function returnFromAPI(response) {
-                return response.json();
-            }
+        const label = inputInterestRate.nextSibling.nextSibling;
 
-            function displayData(response) {
-                const result = parseFloat(response.result);
+        label.innerText = "";
+      }
+    }
 
-                const resultFormatFloat = result.toFixed(2);
-                const resultFormatString = resultFormatFloat.replace(".", ",");
+    function checkInputContributionTime() {
+      if (!inputContributionTime.value || inputContributionTime.value < 1) {
+        hasError = true;
 
-                content = `
+        inputContributionTime.classList.add("error");
+
+        const label = inputContributionTime.nextSibling.nextSibling;
+
+        label.innerText = "Informe um tempo de contribuição válido";
+      } else {
+        inputContributionTime.classList.remove("error");
+
+        const label = inputContributionTime.nextSibling.nextSibling;
+
+        label.innerText = "";
+      }
+    }
+
+    checkName();
+    checkInputMonthlyPayment();
+    checkInputInterestRate();
+    checkInputContributionTime();
+
+    if (!hasError) {
+      const valueMonthlyPayment = inputMonthlyPayment.value;
+
+      const valueMonthlyPaymentFormat = valueMonthlyPayment.replace(",", "");
+
+      const valueInputInterestRate = inputInterestRate.value;
+
+      const valueInputInterestRateFormat = valueInputInterestRate.replace(
+        ",",
+        ""
+      );
+
+      const configs = {
+        method: "POST",
+        body: `{ "expr": "${valueMonthlyPaymentFormat} * (((1 + 0.0${valueInputInterestRateFormat}) ^ ${
+          inputContributionTime.value * 12
+        } - 1) / 0.0${valueInputInterestRateFormat})" }`,
+      };
+
+      let content = "";
+
+      fetch("https://api.mathjs.org/v4/", configs)
+        .then(returnFromAPI)
+        .then(displayData);
+
+      function returnFromAPI(response) {
+        return response.json();
+      }
+
+      function displayData(response) {
+        const result = parseFloat(response.result);
+
+        const resultFormatFloat = result.toFixed(2);
+        const resultFormatString = resultFormatFloat.replace(".", ",");
+
+        content = `
                     <h1>Ciclic</h1>
 
                     <fieldset>
@@ -227,25 +230,27 @@ buttonSimulate.addEventListener("click", function() {
                     </fieldset>
                 `;
 
-                form.style.display = "none";
+        form.style.display = "none";
 
-                inputName.value = "";
-                inputMonthlyPayment.value = "";
-                inputInterestRate.value = "";
-                inputContributionTime.value = "";
+        inputName.value = "";
+        inputMonthlyPayment.value = "";
+        inputInterestRate.value = "";
+        inputContributionTime.value = "";
 
-                formResult.classList.add("form");
-                formResult.innerHTML = content;
+        formResult.classList.add("form");
+        formResult.innerHTML = content;
 
-                formResult.style.display = "block"
-  
-                const buttonSimulateAgain = document.getElementById("buttonSimulateAgain");
+        formResult.style.display = "block";
 
-                buttonSimulateAgain.addEventListener("click", function() {
-                    formResult.style.display = "none";
-                    form.style.display = "block";     
-                });
-            }
-        }
-    } 
+        const buttonSimulateAgain = document.getElementById(
+          "buttonSimulateAgain"
+        );
+
+        buttonSimulateAgain.addEventListener("click", function () {
+          formResult.style.display = "none";
+          form.style.display = "block";
+        });
+      }
+    }
+  };
 });
