@@ -9,6 +9,7 @@ const inputContributionTime = document.forms["form"]["contributionTime"];
 
 let countCommaX = 0;
 let countCommaY = 0;
+let countContributionTime = 0;
 
 inputName.addEventListener("keypress", function (e) {
   const keyCode = e.keyCode ? e.keyCode : e.wich;
@@ -79,6 +80,28 @@ inputInterestRate.addEventListener("keypress", function (e) {
       countCommaY -= countCommaY;
     }
   });
+});
+
+inputContributionTime.addEventListener("keypress", function (e) {
+    const keyCode = e.keyCode ? e.keyCode : e.wich;
+  
+    if(keyCode > 47 && keyCode < 58) {
+        if(countContributionTime < 2) {
+            countContributionTime += 1;
+        } else {
+            e.preventDefault();
+        }
+    } else {
+        e.preventDefault();
+    }
+  
+    inputContributionTime.addEventListener("keydown", function (e) {
+      const keyCode = e.keyCode ? e.keyCode : e.wich;
+  
+      if(keyCode == 8 && countContributionTime > 0) {
+        countContributionTime -= 1;
+      }
+    });
 });
 
 buttonSimulate.addEventListener("click", function () {
