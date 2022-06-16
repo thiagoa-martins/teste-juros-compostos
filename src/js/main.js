@@ -202,9 +202,9 @@ buttonSimulate.addEventListener("click", function () {
     if (!hasError) {
       const configs = {
         method: "POST",
-        body: `{ "expr": "${valueMonthlyPaymentFormat} * (((1 + 0.0${valueInputInterestRateFormat}) ^ ${
+        body: `{ "expr": "${inputMonthlyPayment.value} * (((1 + 0.0${inputInterestRate.value}) ^ ${
           inputContributionTime.value * 12
-        } - 1) / 0.0${valueInputInterestRateFormat})" }`,
+        } - 1) / 0.0${inputInterestRate.value})" }`,
       };
 
       let content = "";
