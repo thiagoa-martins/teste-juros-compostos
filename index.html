@@ -14,7 +14,7 @@
 
       <fieldset>
         <label for="name">Nome</label>
-        <input id="name" type="text" name="name" pattern="[A-Za-z ]{4,30}" title="O nome deve ser um texto com no max: 30 digitos"/>
+        <input id="name" type="text" name="name" pattern="[A-Za-z ]{4,30}" title="O nome deve ser um texto com no max: 30 dígitos"/>
         <label class="message"></label>
       </fieldset>
 
@@ -22,10 +22,10 @@
         <label for="monthlyPayment">Mensalidade</label>
         <input
           id="monthlyPayment"
-          type="text"
+          type="number"
           name="monthlyPayment"
-          placeholder="Somente números"
-          pattern="^(?=.*[0-9])[0-9,]{1,4}" title="Ex: 20 max: 4 digitos"
+          placeholder="Somente números. max: 4 dígitos"
+          pattern="^(?=.*[0-9])[0-9][.]{1,4}{1}" title="Ex: 20 max: 4 dígitos"
         />
         <label class="message"></label>
       </fieldset>
@@ -34,10 +34,10 @@
         <label for="interestRate">Taxa de juros (%)</label>
         <input
           id="interestRate"
-          type="text"
+          type="number"
           name="interestRate"
-          placeholder="Somente números"
-          pattern="^(?=.*[0-9])[0-9,]{1,4}" title="Ex: 0,517 max: 4 digitos"
+          placeholder="Somente números. max: 4 dígitos"
+          pattern="^(?=.*[0-9])[0-9][.]{1,4}{1}" title="Ex: 0.517 max: 4 dígitos"
         />
         <label class="message"></label>
       </fieldset>
@@ -48,7 +48,7 @@
           id="contributionTime"
           type="number"
           name="contributionTime"
-          placeholder="Ano(s)" pattern="^(?=.*[0-9])[0-9]{1,2}" title="Ex: 1 max: 2 digitos"
+          placeholder="Ano(s)" pattern="^(?=.*[0-9])[0-9]{1,2}" title="Ex: 1 max: 2 dígitos"
         />
         <label class="message"></label>
       </fieldset>

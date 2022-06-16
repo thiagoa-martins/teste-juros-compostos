@@ -7,8 +7,8 @@ const inputMonthlyPayment = document.forms["form"]["monthlyPayment"];
 const inputInterestRate = document.forms["form"]["interestRate"];
 const inputContributionTime = document.forms["form"]["contributionTime"];
 
-let countCommaX = 0;
-let countCommaY = 0;
+let countMonthlyPayment = 0;
+let countInterestRate = 0;
 let countContributionTime = 0;
 
 inputName.addEventListener("keypress", function (e) {
@@ -18,7 +18,7 @@ inputName.addEventListener("keypress", function (e) {
     113, 119, 101, 114, 116, 121, 117, 105, 111, 112, 97, 102, 103, 104, 106,
     107, 108, 231, 122, 120, 99, 118, 98, 110, 109, 115, 81, 100, 32, 87, 69,
     82, 84, 89, 85, 73, 79, 80, 65, 83, 68, 70, 71, 72, 74, 75, 76, 199, 90, 88,
-    67, 86, 66, 78, 77
+    67, 86, 66, 78, 77,
   ];
 
   let validade = false;
@@ -37,13 +37,11 @@ inputName.addEventListener("keypress", function (e) {
 inputMonthlyPayment.addEventListener("keypress", function (e) {
   const keyCode = e.keyCode ? e.keyCode : e.wich;
 
-  if ((keyCode > 47 && keyCode < 58) || keyCode == 44) {
-    if (keyCode == 44) {
-      if (countCommaX == 0) {
-        countCommaX += 1;
-      } else {
-        e.preventDefault();
-      }
+  if (keyCode > 47 && keyCode < 58) {
+    if (countMonthlyPayment < 4) {
+      countMonthlyPayment += 1;
+    } else {
+      e.preventDefault();
     }
   } else {
     e.preventDefault();
@@ -52,8 +50,8 @@ inputMonthlyPayment.addEventListener("keypress", function (e) {
   inputMonthlyPayment.addEventListener("keydown", function (e) {
     const keyCode = e.keyCode ? e.keyCode : e.wich;
 
-    if (keyCode == 8 && countCommaX == 1) {
-      countCommaX -= countCommaX;
+    if (keyCode == 8 && countMonthlyPayment > 0) {
+      countMonthlyPayment -= 1;
     }
   });
 });
@@ -61,13 +59,11 @@ inputMonthlyPayment.addEventListener("keypress", function (e) {
 inputInterestRate.addEventListener("keypress", function (e) {
   const keyCode = e.keyCode ? e.keyCode : e.wich;
 
-  if ((keyCode > 47 && keyCode < 58) || keyCode == 44) {
-    if (keyCode == 44) {
-      if (countCommaY == 0) {
-        countCommaY += 1;
-      } else {
-        e.preventDefault();
-      }
+  if (keyCode > 47 && keyCode < 58) {
+    if (countInterestRate < 4) {
+      countInterestRate += 1;
+    } else {
+      e.preventDefault();
     }
   } else {
     e.preventDefault();
@@ -76,32 +72,32 @@ inputInterestRate.addEventListener("keypress", function (e) {
   inputInterestRate.addEventListener("keydown", function (e) {
     const keyCode = e.keyCode ? e.keyCode : e.wich;
 
-    if (keyCode == 8 && countCommaY == 1) {
-      countCommaY -= countCommaY;
+    if (keyCode == 8 && countInterestRate > 0) {
+      countInterestRate -= 1;
     }
   });
 });
 
 inputContributionTime.addEventListener("keypress", function (e) {
-    const keyCode = e.keyCode ? e.keyCode : e.wich;
-  
-    if(keyCode > 47 && keyCode < 58) {
-        if(countContributionTime < 2) {
-            countContributionTime += 1;
-        } else {
-            e.preventDefault();
-        }
+  const keyCode = e.keyCode ? e.keyCode : e.wich;
+
+  if (keyCode > 47 && keyCode < 58) {
+    if (countContributionTime < 2) {
+      countContributionTime += 1;
     } else {
-        e.preventDefault();
+      e.preventDefault();
     }
-  
-    inputContributionTime.addEventListener("keydown", function (e) {
-      const keyCode = e.keyCode ? e.keyCode : e.wich;
-  
-      if(keyCode == 8 && countContributionTime > 0) {
-        countContributionTime -= 1;
-      }
-    });
+  } else {
+    e.preventDefault();
+  }
+
+  inputContributionTime.addEventListener("keydown", function (e) {
+    const keyCode = e.keyCode ? e.keyCode : e.wich;
+
+    if (keyCode == 8 && countContributionTime > 0) {
+      countContributionTime -= 1;
+    }
+  });
 });
 
 buttonSimulate.addEventListener("click", function () {
@@ -204,17 +200,6 @@ buttonSimulate.addEventListener("click", function () {
     checkInputContributionTime();
 
     if (!hasError) {
-      const valueMonthlyPayment = inputMonthlyPayment.value;
-
-      const valueMonthlyPaymentFormat = valueMonthlyPayment.replace(",", "");
-
-      const valueInputInterestRate = inputInterestRate.value;
-
-      const valueInputInterestRateFormat = valueInputInterestRate.replace(
-        ",",
-        ""
-      );
-
       const configs = {
         method: "POST",
         body: `{ "expr": "${valueMonthlyPaymentFormat} * (((1 + 0.0${valueInputInterestRateFormat}) ^ ${
