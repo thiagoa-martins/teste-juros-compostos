@@ -198,7 +198,7 @@ const clickButtonSimulate = buttonSimulate.addEventListener("click", function() 
 
             let content = ""; 
 
-            fetch("http://api.mathjs.org/v4/", configs)
+            fetch("https://api.mathjs.org/v4/", configs)
             .then(returnFromAPI)
             .then(displayData)
 
